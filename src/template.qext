@@ -1,6 +1,6 @@
 {
-  "name" : "timeScatter",
-  "description" : "timeScatter",
+  "name" : "picassoScatter",
+  "description" : "picassoScatter",
   "icon" : "extension",
   "type" : "visualization",
   "version": "1.0",

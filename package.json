@@ -4,7 +4,7 @@
   "description": "Qlik Sense Scatterplot",
   "main": "index.js",
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server --env.development --env.url=http://localhost:4848/sense/app/C%3A%5CUsers%5Ctgorr%5CDocuments%5CQlik%5CSense%5CApps%5CScatter.qvf/sheet/3242281e-c139-472c-abdd-8b4b62f0af2a/state/edit --env.build_output=C:/Users/tgorr/Documents/Qlik/Sense/Extensions/timeScatter --progress",
+    "dev": "node_modules/.bin/webpack-dev-server --env.development --env.url=http://localhost:4848/sense/app/C%3A%5CUsers%5Ctgorr%5CDocuments%5CQlik%5CSense%5CApps%5CScatter.qvf/sheet/3242281e-c139-472c-abdd-8b4b62f0af2a/state/edit --env.build_output=C:/Users/tgorr/Documents/Qlik/Sense/Extensions/picassoScatter --progress",
     "build": "webpack -p --env.production --progress --colors",
     "deploy": "webpack -p --env.production --env.deploy_command=deploy.bat --progress --colors"
   },
