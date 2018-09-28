@@ -1,5 +1,6 @@
 export function getUpdateConfig(layout) {
     const fakeDomPointConfig = getFakeDomPointConfig();
+    const scales = getScales(layout);
     return {
         data: [{
             type: "q",
@@ -67,24 +68,28 @@ export function getUpdateConfig(layout) {
 }
 
 
-const scales = {
-    x_axis: {
-        data: {field: "qMeasureInfo/0"},
-        min: 0,//{field: "qGrandTotalRow/0/qMin"},
-        max: {field: "qGrandTotalRow/0/qMax"},
-        expand: 0.1,
-        ticks: {
-            distance: 100,
+function getScales(layout) {
+    console.log({layout});
+    const qMeasureInfo = layout.qHyperCube.qMeasureInfo;
+    return {
+        x_axis: {
+            data: {field: "qMeasureInfo/0"},
+            min: qMeasureInfo[0].qMin - 1000,
+            max: qMeasureInfo[0].qMax + 1000,
+            expand: 0.1,
+            ticks: {
+                distance: 100,
+            },
         },
-    },
-    y_axis: {
-        data: {field: "qMeasureInfo/1"},
-        invert: true,
-        expand: 0.1,
-        min: 0,
-        max: {field: "qGrandTotalRow/1/qMax"},
-    },
-};
+        y_axis: {
+            data: {field: "qMeasureInfo/1"},
+            invert: true,
+            expand: 0.1,
+            min: qMeasureInfo[1].qMin - 1000,
+            max: qMeasureInfo[1].qMax + 1000,
+        },
+    };
+}
 
 function getFakeDomPointConfig() {
     return {
