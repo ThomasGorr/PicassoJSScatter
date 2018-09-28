@@ -10,7 +10,7 @@ export const definition = {
         measure: {
             uses: "measures",
             min: 2,
-            max: 2,
+            max: 6,
         },
         sorting: {
             uses: "sorting",

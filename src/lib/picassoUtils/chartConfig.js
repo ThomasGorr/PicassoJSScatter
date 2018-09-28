@@ -30,6 +30,7 @@ export function getUpdateConfig(layout) {
                             props: {
                                 x: {field: "qMeasureInfo/0"},
                                 y: {field: "qMeasureInfo/1"},
+                                thumbnail: {field: "qMeasureInfo/2"},
                             },
                         },
                     },
