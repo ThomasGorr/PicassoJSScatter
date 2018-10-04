@@ -80,7 +80,6 @@ function getCustomDomPoint(layout) {
 }
 
 function getScales(layout) {
-    console.log({layout});
     const qMeasureInfo = layout.qHyperCube.qMeasureInfo;
     return {
         x_axis: {
