@@ -1,3 +1,4 @@
+// TODO Set this in property panel
 const DEFAULT_SETTINGS = ({
     width: 60,
     height: 60,
