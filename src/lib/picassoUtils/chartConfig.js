@@ -1,7 +1,8 @@
 export function getUpdateConfig(layout) {
-    const fakeDomPointConfig = getFakeDomPointConfig();
+    const fakeDomPointConfig = getFakeDomPointConfig(layout);
+    const customDomPoint = getCustomDomPoint(layout);
     const scales = getScales(layout);
-    return {
+    let chartConfig = {
         data: [{
             type: "q",
             key: "qHyperCube",
@@ -22,25 +23,6 @@ export function getUpdateConfig(layout) {
                     dock: "left",
                     scale: "y_axis",
                 },
-                { //TODO ACTIVACE/DEACTIVATE CUSTOM DOMPOINT HERE
-                    key: "dom_point",
-                    type: "dompoint",
-                    data: {
-                        extract: {
-                            field: "qDimensionInfo/0",
-                            props: {
-                                x: {field: "qMeasureInfo/0"},
-                                y: {field: "qMeasureInfo/1"},
-                                thumbnail: {field: "qMeasureInfo/2"},
-                            },
-                        },
-                    },
-                    settings: {
-                        x: {scale: "x_axis"},
-                        y: {scale: "y_axis"},
-                        "background-size": "cover",
-                    },
-                },
                 fakeDomPointConfig,
                 tooltipDef,
             ],
@@ -48,16 +30,16 @@ export function getUpdateConfig(layout) {
                 type: "native",
                 events: {
                     mousemove(e) {
-                        console.log("MOUSEMOVE", e);
                         try {
-                            const tooltip = this.chart.component("tooltip");
-                            tooltip.emit("show", e);
+                            // TODO On Mouseover, set to foreground
+                            const tooltip = this.chart.component("my-tooltip");
+                            tooltip.emit("hover", e);
                         } catch (e) {
                             console.error(e);
                         }
                     },
                     mouseleave() {
-                        const tooltip = this.chart.component("tooltip");
+                        const tooltip = this.chart.component("my-tooltip");
                         tooltip.emit("hide");
                     },
                 },
@@ -65,8 +47,37 @@ export function getUpdateConfig(layout) {
             ],
         },
     };
+    if(customDomPoint){
+        chartConfig.settings.components.push(customDomPoint);
+    }
+    return chartConfig;
 }
 
+function getCustomDomPoint(layout) {
+    if (layout.props.pointRepresentation === "calculatedIcon") {
+        return { //TODO ACTIVACE/DEACTIVATE CUSTOM DOMPOINT HERE
+            key: "dom_point",
+            type: "dompoint",
+            data: {
+                extract: {
+                    field: "qDimensionInfo/0",
+                    props: {
+                        x: {field: "qMeasureInfo/0"},
+                        y: {field: "qMeasureInfo/1"},
+                        thumbnail: {field: "qMeasureInfo/2"},
+                    },
+                },
+            },
+            settings: {
+                x: {scale: "x_axis"},
+                y: {scale: "y_axis"},
+                "background-size": "cover",
+            },
+        };
+    } else {
+        return;
+    }
+}
 
 function getScales(layout) {
     console.log({layout});
@@ -91,7 +102,13 @@ function getScales(layout) {
     };
 }
 
-function getFakeDomPointConfig() {
+function getFakeDomPointConfig(layout) {
+    // TODO set this to a rectangle
+    // TODO Color by Measure
+    let opacity = 0;
+    if(layout.props.pointRepresentation == "point"){
+        opacity = 1;
+    }
     return {
         key: "point",
         type: "point",
@@ -107,19 +124,20 @@ function getFakeDomPointConfig() {
         settings: {
             x: {scale: "x_axis"},
             y: {scale: "y_axis"},
-            opacity: 0.8,
+            opacity,
             size: 1,
-            strokeWidth: 2,
-            stroke: "#fff",
+            strokeWidth: 0,
         },
     };
 }
 
-
 const tooltipDef = {
-    key: "tooltip",
-    type: "tooltip",
+    key: "my-tooltip",
+    type: "my-tooltip",
     settings: {
-        placement: "pointer",
+        placement: () => ({
+            type: "pointer",
+            dock: "bottom", //TODO if ->> bottom/top
+        }),
     },
 };
