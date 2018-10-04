@@ -1,4 +1,4 @@
-export function getUpdateConfig(layout) {
+export function getUpdateConfig(layout, data) {
     const fakeDomPointConfig = getFakeDomPointConfig(layout);
     const customDomPoint = getCustomDomPoint(layout);
     const scales = getScales(layout);
@@ -6,7 +6,7 @@ export function getUpdateConfig(layout) {
         data: [{
             type: "q",
             key: "qHyperCube",
-            data: layout.qHyperCube,
+            data,
         }],
         settings: {
             scales,
