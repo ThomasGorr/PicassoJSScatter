@@ -88,7 +88,6 @@ export const myTooltip = {
         ];
     },
     render(h) { // Mandatory, otherwise there is an error
-        console.log("Render");
         this.h = h;
         return [];
     },
