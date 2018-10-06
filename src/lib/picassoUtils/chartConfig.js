@@ -111,7 +111,7 @@ function getFakeDomPointConfig(layout, data) {
     measures.y = {field: "qMeasureInfo/1"};
     //extract tooltip KPIs to use their data in tooltip
     for (let i = 2; i < data.qMeasureInfo.length; i++) {
-        measures["tooltip" + i] = {field: "qMeasureInfo/" + i};//data.qMeasureInfo[i].qFallbackTitle;
+        measures[data.qMeasureInfo[i].qFallbackTitle] = {field: "qMeasureInfo/" + i};//data.qMeasureInfo[i].qFallbackTitle;
     }
     let opacity = 0;
     if (layout.props.pointRepresentation == "point") {
