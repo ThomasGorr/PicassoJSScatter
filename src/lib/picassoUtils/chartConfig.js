@@ -123,10 +123,7 @@ function getFakeDomPointConfig(layout, data) {
         data: {
             extract: {
                 field: "qDimensionInfo/0",
-                props: {
-                    x: {field: "qMeasureInfo/0"},
-                    y: {field: "qMeasureInfo/1"},
-                },
+                props: measures,
             },
         },
         settings: {
