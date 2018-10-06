@@ -37,8 +37,10 @@ async function createCube(properties, app) {
     }
     properties.tooltipArray.forEach((tooltipRow) => {
         const value = tooltipRow.props.tooltip.value;
+        const key = tooltipRow.props.tooltip.key;
         qHyperCubeDef.qMeasures.push({
             qDef: {
+                qLabel: key,
                 qDef: value,
 
             },
