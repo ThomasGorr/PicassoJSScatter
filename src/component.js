@@ -46,11 +46,9 @@ async function createCube(properties, app) {
             },
         });
     });
-    console.log("HyperCubeDef", qHyperCubeDef);
-    console.log("#2 qMeasures:", qHyperCubeDef.qMeasures.length);
     const numberOfMeasures = qHyperCubeDef.qMeasures.length;
     const qWidth = numberOfMeasures + 1; // Plus 1 dimension
-    const numberOfDimPoints = Math.floor(10000 / numberOfMeasures);
+    const numberOfDimPoints = Math.floor(10000 / qWidth);
     qHyperCubeDef.qInitialDataFetch = [{qTop: 0, qLeft: 0, qHeight: numberOfDimPoints, qWidth}];
     return await app.createCube(qHyperCubeDef);
 }
