@@ -12,9 +12,6 @@ export const myTooltip = {
                     y: e.clientY - b.top,
                 };
                 this.state.nodes = this.chart.shapesAt(point);
-                if (this.state.nodes.length > 0) {
-                    console.log("Nodes", this.state.nodes);
-                }
                 this.renderer.render(this.buildNodes());
             } catch (e) {
                 console.error(e);

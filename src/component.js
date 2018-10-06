@@ -19,12 +19,12 @@ export async function main($element, layout, that) {
     const app = qlik.currApp();
     const properties = await that.backendApi.getProperties();
     const data = await createCube(properties, app);
-    console.log("Properties", properties);
     innerPaint($element, layout, data);
 }
 
 async function createCube(properties, app) {
     let qHyperCubeDef = JSON.parse(JSON.stringify(properties.qHyperCubeDef));
+
     if (properties.props.pointRepresentation === "calculatedIcon") {
         qHyperCubeDef.qMeasures.push({
             picassoScatters: {
