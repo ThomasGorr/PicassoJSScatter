@@ -61,7 +61,7 @@ async function innerPaint($element, layout, data) {
         data: [],
     });
 
-    const updateConfig = getUpdateConfig(layout, data.layout.qHyperCube, "");
+    const updateConfig = getUpdateConfig(layout, data.layout.qHyperCube);
     pChart.update(updateConfig);
 
 }
