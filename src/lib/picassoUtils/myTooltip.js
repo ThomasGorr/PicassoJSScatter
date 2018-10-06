@@ -36,7 +36,7 @@ export const myTooltip = {
         const top = targetNode.bounds.y + targetNode.bounds.height + nodeDelta.y - this.rect.y;
 
         console.log({shapes});
-        const rows = Object.keys(shapes[0].data).filter(prop => prop !== "value" && prop !== "source" && prop !== "tooltipThumbnail").map(dataProp => {
+        const rows = Object.keys(shapes[0].data).filter(prop => prop !== "value" && prop !== "source" && prop !== "tooltipThumbnail").map((dataProp,index) => {
             console.log({dataProp});
             const row = {};
             row[dataProp] = shapes[0].data[dataProp];
@@ -46,7 +46,7 @@ export const myTooltip = {
                         display: "flex",
                     },
                 },
-                this.buildRow(row)
+                this.buildRow(row, index)
             );
         });
 
@@ -75,7 +75,10 @@ export const myTooltip = {
     beforeRender(opts) {
         this.rect = opts.size;
     },
-    buildRow() {
+    buildRow(row, index) {
+        console.log({row});
+        // TODO: Fix this: Remove index. Index is used because first row (dimension) has no label property
+        const label = index === 0 ? row[Object.keys(row)[0]] : row[Object.keys(row)[0]].label;
         return [
             this.h("div",
                 {
@@ -87,7 +90,7 @@ export const myTooltip = {
                 Object.keys(row)[0]),
             this.h("div",
                 {},
-                row[Object.keys(row)[0]].label),
+                label),
         ];
     },
     render(h) { // Mandatory, otherwise there is an error
