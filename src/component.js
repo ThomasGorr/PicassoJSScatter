@@ -36,6 +36,7 @@ async function createCube(properties, app) {
             },
         });
     }
+    // Add all tooltip fields as qMeasure to qHyperCubeDef to hold the tooltip information.
     properties.tooltipArray.forEach((tooltipRow) => {
         const value = tooltipRow.props.tooltip.value;
         const key = tooltipRow.props.tooltip.key;
