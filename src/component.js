@@ -35,20 +35,29 @@ async function createCube(properties, app) {
             },
         });
     }
-    console.log({qHyperCubeDef});
+    properties.tooltipArray.forEach((tooltipRow) => {
+        const value = tooltipRow.props.tooltip.value;
+        qHyperCubeDef.qMeasures.push({
+            qDef: {
+                qDef: value,
+
+            },
+        });
+    });
+    console.log("HyperCubeDef", qHyperCubeDef);
+    console.log("#2 qMeasures:", qHyperCubeDef.qMeasures.length);
+    qHyperCubeDef.qInitialDataFetch = [{qTop: 0, qLeft: 0, qHeight: 500, qWidth: 20}];
     return await app.createCube(qHyperCubeDef);
 }
 
 async function innerPaint($element, layout, data) {
     defineHTML($, $element);
-    console.log("Layout", layout);
-    console.log("Data", data);
     const pChart = picasso.chart({
         element: $element[0].querySelector("#scatter"),
         data: [],
     });
 
-    const updateConfig = getUpdateConfig(layout, data.layout.qHyperCube);
+    const updateConfig = getUpdateConfig(layout, data.layout.qHyperCube, "");
     pChart.update(updateConfig);
 
 }
