@@ -36,14 +36,17 @@ export const myTooltip = {
         const top = targetNode.bounds.y + targetNode.bounds.height + nodeDelta.y - this.rect.y;
 
         console.log({shapes});
-        const rows = shapes.filter(prop => prop !== "value" && prop !== "label").map(dataProp => {
+        const rows = Object.keys(shapes[0].data).filter(prop => prop !== "value" && prop !== "source").map(dataProp => {
+            console.log({dataProp});
+            const row = {};
+            row[dataProp] = shapes[0].data[dataProp];
             return this.h("div",
                 {
                     style: {
                         display: "flex",
                     },
                 },
-                this.buildRow(dataProp !== "source" ? targetNode.data[dataProp] : targetNode.data)
+                this.buildRow(row)
             );
         });
 
@@ -81,10 +84,10 @@ export const myTooltip = {
                         "font-weight": 600,
                     },
                 },
-                "test: "),
+                Object.keys(row)[0]),
             this.h("div",
                 {},
-                "200"),
+                row[Object.keys(row)[0]].label),
         ];
     },
     render(h) { // Mandatory, otherwise there is an error
