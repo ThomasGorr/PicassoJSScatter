@@ -85,19 +85,19 @@ function getScales(layout) {
     return {
         x_axis: {
             data: {field: "qMeasureInfo/0"},
-            min: qMeasureInfo[0].qMin - 1000,
-            max: qMeasureInfo[0].qMax + 1000,
+            min: qMeasureInfo[0].qMin * 0.95,
+            max: qMeasureInfo[0].qMax * 1.05,
             expand: 0.1,
-            ticks: {
-                distance: 100,
-            },
+            // ticks: {
+            //     distance: 100,
+            // },
         },
         y_axis: {
             data: {field: "qMeasureInfo/1"},
             invert: true,
             expand: 0.1,
-            min: qMeasureInfo[1].qMin - 1000,
-            max: qMeasureInfo[1].qMax + 1000,
+            min: qMeasureInfo[1].qMin * 0.95,
+            max: qMeasureInfo[1].qMax * 1.05,
         },
     };
 }
