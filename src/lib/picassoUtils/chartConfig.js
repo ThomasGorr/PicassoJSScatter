@@ -1,5 +1,6 @@
 export function getUpdateConfig(layout, data) {
-    const fakeDomPointConfig = getFakeDomPointConfig(layout);
+    console.log(layout, data);
+    const fakeDomPointConfig = getFakeDomPointConfig(layout, data);
     const customDomPoint = getCustomDomPoint(layout);
     const scales = getScales(layout);
     let chartConfig = {
@@ -101,9 +102,17 @@ function getScales(layout) {
     };
 }
 
-function getFakeDomPointConfig(layout) {
+function getFakeDomPointConfig(layout, data) {
     // TODO set this to a rectangle
     // TODO Color by Measure
+    console.log("getFakeDomPointConfig", data);
+    const measures = {};
+    measures.x = {field: "qMeasureInfo/0"};
+    measures.y = {field: "qMeasureInfo/1"};
+    //extract tooltip KPIs to use their data in tooltip
+    for (let i = 2; i < data.qMeasureInfo.length; i++) {
+        measures["tooltip" + i] = {field: "qMeasureInfo/" + i};//data.qMeasureInfo[i].qFallbackTitle;
+    }
     let opacity = 0;
     if (layout.props.pointRepresentation == "point") {
         opacity = 1;
