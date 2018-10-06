@@ -36,7 +36,7 @@ export const myTooltip = {
         const top = targetNode.bounds.y + targetNode.bounds.height + nodeDelta.y - this.rect.y;
 
         console.log({shapes});
-        const rows = Object.keys(shapes[0].data).filter(prop => prop !== "value" && prop !== "source").map(dataProp => {
+        const rows = Object.keys(shapes[0].data).filter(prop => prop !== "value" && prop !== "source" && prop !== "tooltipThumbnail").map(dataProp => {
             console.log({dataProp});
             const row = {};
             row[dataProp] = shapes[0].data[dataProp];

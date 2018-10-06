@@ -31,6 +31,7 @@ async function createCube(properties, app) {
                 technicalId: "pointRepresentation",
             },
             qDef: {
+                qLabel: "tooltipThumbnail",
                 qDef: properties.props.calculatedItem,
             },
         });
