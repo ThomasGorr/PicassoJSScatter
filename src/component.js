@@ -25,6 +25,7 @@ export async function main($element, layout, that) {
 
 async function createCube(properties, app) {
     let qHyperCubeDef = properties.qHyperCubeDef;
+    let qHyperCubeDef = JSON.parse(JSON.stringify(properties.qHyperCubeDef));
     if (properties.props.pointRepresentation === "calculatedIcon") {
         qHyperCubeDef.qMeasures.push({
             picassoScatters: {
