@@ -47,7 +47,7 @@ export function getUpdateConfig(layout, data) {
             ],
         },
     };
-    if(customDomPoint){
+    if (customDomPoint) {
         chartConfig.settings.components.push(customDomPoint);
     }
     return chartConfig;
@@ -105,7 +105,7 @@ function getFakeDomPointConfig(layout) {
     // TODO set this to a rectangle
     // TODO Color by Measure
     let opacity = 0;
-    if(layout.props.pointRepresentation == "point"){
+    if (layout.props.pointRepresentation == "point") {
         opacity = 1;
     }
     return {
