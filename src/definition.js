@@ -56,7 +56,7 @@ export const definition = {
                     type: "array",
                     ref: "tooltipArray",
                     label: "Tooltip definition",
-                    itemTitleRef: "label",
+                    itemTitleRef: "props.tooltip.key",
                     allowAdd: true,
                     allowRemove: true,
                     addTranslation: "Add Tooltip line",
