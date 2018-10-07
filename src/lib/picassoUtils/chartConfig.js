@@ -88,9 +88,6 @@ function getScales(layout) {
             min: qMeasureInfo[0].qMin * 0.95,
             max: qMeasureInfo[0].qMax * 1.05,
             expand: 0.1,
-            // ticks: {
-            //     distance: 100,
-            // },
         },
         y_axis: {
             data: {field: "qMeasureInfo/1"},
@@ -111,7 +108,7 @@ function getFakeDomPointConfig(layout, data) {
     measures.y = {field: "qMeasureInfo/1"};
     //extract tooltip KPIs to use their data in tooltip
     for (let i = 2; i < data.qMeasureInfo.length; i++) {
-        measures[data.qMeasureInfo[i].qFallbackTitle] = {field: "qMeasureInfo/" + i};//data.qMeasureInfo[i].qFallbackTitle;
+        measures[data.qMeasureInfo[i].qFallbackTitle] = {field: "qMeasureInfo/" + i};
     }
     let opacity = 0;
     if (layout.props.pointRepresentation == "point") {
