@@ -86,6 +86,10 @@ export const myTooltip = {
             this.h("div",
                 {},
                 label),
+            this.h("div", [
+                this.h("img", {attrs: {src:"https://picassojs.com/img/tooltip.png"}}, [
+                ]),
+            ]),
         ];
     },
     render(h) { // Mandatory, otherwise there is an error
