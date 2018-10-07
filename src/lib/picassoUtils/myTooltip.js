@@ -86,24 +86,33 @@ export function myTooltip(properties) {
             this.rect = opts.size;
         },
         buildRow(row, index) {
+            console.log({row});
+            let representationType = "text"; //default
+            if (row[Object.keys(row)[0]].hasOwnProperty("representationType")
+                && (row[Object.keys(row)[0]].representationType !== "text" && row[Object.keys(row)[0]].representationType !== undefined)) {
+                representationType = row[Object.keys(row)[0]].representationType;
+            }
             // TODO: Fix this: Remove index. Index is used because first row (dimension) has no label property
             const label = index === 0 ? row[Object.keys(row)[0]] : row[Object.keys(row)[0]].label;
-            return [
-                this.h("div",
+            let tooltipRow = [];
+            if (representationType === "text") {
+                tooltipRow.push(this.h("div",
                     {
                         style: {
                             "margin-right": "4px",
                             "font-weight": 600,
                         },
                     },
-                    Object.keys(row)[0]),
-                this.h("div",
+                    Object.keys(row)[0]));
+                tooltipRow.push(this.h("div",
                     {},
-                    label),
-                this.h("div", [
+                    label));
+            } else if(representationType === "img"){
+                tooltipRow.push( this.h("div", [
                     this.h("img", {attrs: {src: "https://picassojs.com/img/tooltip.png"}}, []),
-                ]),
-            ];
+                ]));
+            }
+            return tooltipRow;
         },
         render(h) { // Mandatory, otherwise there is an error
             this.h = h;
