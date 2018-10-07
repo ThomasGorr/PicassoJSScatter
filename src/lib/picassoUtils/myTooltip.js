@@ -20,7 +20,7 @@ export function myTooltip(properties) {
                         Object.keys(node.data).forEach((key) => {
                             tooltipArray.forEach((tooltip) => {
                                 if (tooltip.props.tooltip.key === key) {
-                                    node.data[key].representationType = tooltip.props.tooltipRepresentationType;
+                                    node.data[key].representationType = tooltip.props.tooltip.representationType;
                                 }
                             });
                         });
