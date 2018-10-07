@@ -61,6 +61,23 @@ export const definition = {
                     allowRemove: true,
                     addTranslation: "Add Tooltip line",
                     items: {
+                        tooltipRepresentationType: {
+                            type: "string",
+                            component: "dropdown",
+                            label: "Representation",
+                            ref: "props.tooltipRepresentationType",
+                            defaultValue: "text",
+                            options: [
+                                {
+                                    value: "text",
+                                    label: "Text",
+                                },
+                                {
+                                    value: "img",
+                                    label: "Image",
+                                },
+                            ],
+                        },
                         key: {
                             type: "string",
                             ref: "props.tooltip.key",
