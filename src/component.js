@@ -10,16 +10,16 @@ import qlik from "qlik";
 
 export async function main($element, layout, that) {
     try {
+        const app = qlik.currApp();
+        const properties = await that.backendApi.getProperties();
         picasso.use(picassoQ);
         picasso.component("dompoint", dompoint);
-        picasso.component("my-tooltip", myTooltip);
+        picasso.component("my-tooltip", myTooltip(properties));
+        const data = await createCube(properties, app);
+        innerPaint($element, layout, data);
     } catch (e) {
         console.error(e);
     }
-    const app = qlik.currApp();
-    const properties = await that.backendApi.getProperties();
-    const data = await createCube(properties, app);
-    innerPaint($element, layout, data);
 }
 
 async function createCube(properties, app) {
