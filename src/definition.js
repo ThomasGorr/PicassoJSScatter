@@ -65,7 +65,7 @@ export const definition = {
                             type: "string",
                             component: "dropdown",
                             label: "Representation",
-                            ref: "props.tooltipRepresentationType",
+                            ref: "props.tooltip.representationType",
                             defaultValue: "text",
                             options: [
                                 {
