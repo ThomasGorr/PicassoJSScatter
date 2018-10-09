@@ -76,6 +76,7 @@ export function myTooltip(properties) {
                         "font-size": this.settings.fontSize,
                         "font-family": "Arial",
                         "z-index": 1000,
+                        "max-width": "300px",
                     },
                 },
                 rows),
