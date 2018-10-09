@@ -11,6 +11,7 @@ export function myTooltip(properties) {
             hover(e) {
                 try {
                     const b = this.chart.element.getBoundingClientRect();
+                    // TODO Check if x or y is null
                     const point = {
                         x: e.clientX - b.left,
                         y: e.clientY - b.top,
@@ -21,6 +22,9 @@ export function myTooltip(properties) {
                             tooltipArray.forEach((tooltip) => {
                                 if (tooltip.props.tooltip.key === key) {
                                     node.data[key].representationType = tooltip.props.tooltip.representationType;
+                                    if (node.data[key].representationType === "img") {
+                                        node.data[key].icon = tooltip.props.tooltip.icon;
+                                    }
                                 }
                             });
                         });
@@ -107,9 +111,12 @@ export function myTooltip(properties) {
                 tooltipRow.push(this.h("div",
                     {},
                     label));
-            } else if(representationType === "img"){
-                tooltipRow.push( this.h("div", [
-                    this.h("img", {attrs: {src: label}}, []),
+            } else if (representationType === "img") {
+                const width = row[Object.keys(row)[0]].icon.width;
+                const height = row[Object.keys(row)[0]].icon.height;
+
+                tooltipRow.push(this.h("div", [
+                    this.h("img", {attrs: {src: label, height, width}}, []),
                 ]));
             }
             return tooltipRow;

@@ -89,6 +89,26 @@ export const definition = {
                             label: "Value",
                             expression: "optional",
                         },
+                        width: {
+                            type: "string",
+                            ref: "props.tooltip.icon.width",
+                            label: "Width",
+                            expression: "optional",
+                            defaultValue: "75",
+                            show: (action)=>{
+                                return action.props.tooltip.representationType === "img";
+                            },
+                        },
+                        height: {
+                            type: "string",
+                            ref: "props.tooltip.icon.height",
+                            label: "Height",
+                            expression: "optional",
+                            defaultValue: "75",
+                            show: (action)=>{
+                                return action.props.tooltip.representationType === "img";
+                            },
+                        },
                     },
                 },
             },
