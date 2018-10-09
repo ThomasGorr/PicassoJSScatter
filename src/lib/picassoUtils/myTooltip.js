@@ -92,12 +92,14 @@ export function myTooltip(properties) {
         buildRow(row, index) {
             console.log({row});
             let representationType = "text"; //default
-            if (row[Object.keys(row)[0]].hasOwnProperty("representationType")
-                && (row[Object.keys(row)[0]].representationType !== "text" && row[Object.keys(row)[0]].representationType !== undefined)) {
-                representationType = row[Object.keys(row)[0]].representationType;
+            const currTooltipRow = row[Object.keys(row)[0]];
+
+            if (currTooltipRow.hasOwnProperty("representationType")
+                && (currTooltipRow.representationType !== "text" && currTooltipRow.representationType !== undefined)) {
+                representationType = currTooltipRow.representationType;
             }
             // TODO: Fix this: Remove index. Index is used because first row (dimension) has no label property
-            const label = index === 0 ? row[Object.keys(row)[0]] : row[Object.keys(row)[0]].label;
+            const label = index === 0 ? currTooltipRow : currTooltipRow.label;
             let tooltipRow = [];
             if (representationType === "text") {
                 tooltipRow.push(this.h("div",
@@ -112,8 +114,8 @@ export function myTooltip(properties) {
                     {},
                     label));
             } else if (representationType === "img") {
-                const width = row[Object.keys(row)[0]].icon.width;
-                const height = row[Object.keys(row)[0]].icon.height;
+                const width = currTooltipRow.icon.width;
+                const height = currTooltipRow.icon.height;
 
                 tooltipRow.push(this.h("div", [
                     this.h("img", {attrs: {src: label, height, width}}, []),
