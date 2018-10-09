@@ -1,5 +1,5 @@
-// import Component from "./component";
 import {main} from "./component";
-export const paint = ($element, layout) => {
-    main($element, layout);
-};
+export function paint ($element, layout)  {
+    const that = this;
+    main($element, layout, that);
+}

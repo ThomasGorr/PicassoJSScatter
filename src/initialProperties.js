@@ -1,4 +1,5 @@
 export const initialProperties = {
+    tooltipArray: [],
     qHyperCubeDef: {
         qDimensions: [],
         qMeasures: [],
