@@ -82,19 +82,20 @@ function getCustomDomPoint(layout) {
 
 function getScales(layout) {
     const qMeasureInfo = layout.qHyperCube.qMeasureInfo;
+    console.log({qMeasureInfo});
     return {
         x_axis: {
             data: {field: "qMeasureInfo/0"},
-            min: qMeasureInfo[0].qMin * 0.95,
-            max: qMeasureInfo[0].qMax * 1.05,
+            // min: qMeasureInfo[0].qMin * 0.95,
+            // max: qMeasureInfo[0].qMax * 1.05,
             expand: 0.1,
         },
         y_axis: {
             data: {field: "qMeasureInfo/1"},
             invert: true,
             expand: 0.1,
-            min: qMeasureInfo[1].qMin * 0.95,
-            max: qMeasureInfo[1].qMax * 1.05,
+            // min: qMeasureInfo[1].qMin * 0.95,
+            // max: qMeasureInfo[1].qMax * 1.05,
         },
     };
 }
