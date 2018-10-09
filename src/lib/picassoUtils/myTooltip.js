@@ -109,7 +109,7 @@ export function myTooltip(properties) {
                     label));
             } else if(representationType === "img"){
                 tooltipRow.push( this.h("div", [
-                    this.h("img", {attrs: {src: "https://picassojs.com/img/tooltip.png"}}, []),
+                    this.h("img", {attrs: {src: label}}, []),
                 ]));
             }
             return tooltipRow;
