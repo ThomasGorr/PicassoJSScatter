@@ -2,7 +2,6 @@
 
 export function myTooltip(properties) {
     const tooltipArray = properties.tooltipArray;
-    console.log("MyTOoltip", tooltipArray);
 
     return {
         require: ["chart", "renderer"],
@@ -37,7 +36,6 @@ export function myTooltip(properties) {
         },
         buildNodes() {
             // Filter out any node that doesn't have any data bound to it or is a container node.
-            console.log("Thos.state", this.state);
             const shapes = this.state.nodes.filter(n => n.data);
             if (!shapes.length) {
                 return [];
@@ -90,7 +88,6 @@ export function myTooltip(properties) {
             this.rect = opts.size;
         },
         buildRow(row, index) {
-            console.log({row});
             let representationType = "text"; //default
             const currTooltipRow = row[Object.keys(row)[0]];
 
