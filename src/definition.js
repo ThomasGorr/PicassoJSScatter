@@ -28,10 +28,10 @@ export const definition = {
                             value: "point",
                             label: "Point",
                         },
-                        {
-                            value: "defaultIcon",
-                            label: "Default icon",
-                        },
+                        // {
+                        //     value: "defaultIcon",
+                        //     label: "Default icon",
+                        // },
                         {
                             value: "calculatedIcon",
                             label: "Calculated icon",
